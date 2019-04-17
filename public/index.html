@@ -45,16 +45,31 @@
         cursor: pointer;
       }
 
+      .wb{
+        
+        border-bottom: 15px solid #696969;
+        border-left: 15px solid #696969;
+        border-right: 15px solid #696969;
+        border-collapse: collapse;
+        width:1000px;
+      }
 
       .toolbar {
-        border-style: solid;
+        border-top: 15px solid #696969;
+        border-left: 15px solid #696969;
+        border-right: 15px solid #696969;
+        border-collapse: collapse;
         padding-top:10px;
         width :800px;
         padding-left:20px;
         background-color: black;
-        border-radius: 5px;  
+         
         overflow: hidden;
         padding-bottom: 20px;
+        padding-top:10px;
+        width :980px;
+        padding-left:20px;
+        background-color:#696969;
       }
 
       .active {
@@ -130,17 +145,17 @@
     </style>
   </head>
 
-  <body>
-    
-    <div class="toolbar" style="padding-top:10px; width :980px; padding-left:20px; background-color:#696969; ">
+  <body style="background-color: white;overflow-x:hidden; ">
+    <div style="width: 100%;">
+    <div class="toolbar" >
       <div class="dropdown">
-      <button onclick="myFunction()" class="dropbtn">Draw</button>
+      <input type="image" id="butt" onclick="myFunction()" class="dropbtn"style="height: 23px; background-color:#D00000; " src="pencil.png"/>
         <div id="myDropdown" class="dropdown-content">
-          <span class="active color" data-color="#D00000" data-width="2"></span>
-          <span class="color" data-color="#ffdd00" data-width="2"></span>
-          <span class="color" data-color="#00077E" data-width="2"></span>
-          <span class="color" data-color="#16CB00" data-width="2"></span>
-          <span class="color" data-color="#000000" data-width="2"></span>
+          <span class="active color" data-color="#D00000" data-width="2" onclick="colorChange('#D00000')"></span>
+          <span class="color" data-color="#ffdd00" data-width="2" onclick="colorChange('#ffdd00')"></span>
+          <span class="color" data-color="#00077E" data-width="2" onclick="colorChange('#00077E')"></span>
+          <span class="color" data-color="#16CB00" data-width="2" onclick="colorChange('#16CB00')"></span>
+          <span class="color" data-color="#000000" data-width="2" onclick="colorChange('#000000')"></span>
         </div>
       </div>
       <!-- <div id="eraser" class="color" data-color="#ffffff" data-width="20">Erase<img style="width: 30px; height: 30px;" src="eraser.jpg"> </div> -->
@@ -150,7 +165,8 @@
       <!-- <span class="button save">save image</span> -->
     </div>
 
-    <div style="border-radius: 10px; border:solid; width:1000px;" id="whiteboard"></div>
+    <div class="wb" id="whiteboard"></div>
+  </div>
 
     
 
@@ -159,12 +175,17 @@
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="/whiteboard.js"></script>
     <script type="text/javascript" src="/app.js"></script>
-
+    <script>
+      function colorChange(a) {
+      document.getElementById("butt").style.backgroundColor = a;
+    }
+</script>
     <script>
     /* When the user clicks on the button, 
     toggle between hiding and showing the dropdown content */
     function myFunction() {
       document.getElementById("myDropdown").classList.toggle("show");
+
     }
 
     // Close the dropdown if the user clicks outside of it
